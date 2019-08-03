@@ -53,8 +53,14 @@ let input = document.querySelector('.final-score').value;
 const inputParse = parseInt(input)
 let sel = document.querySelector(`#current-${activePlayer}`).textContent;
 const val = parseInt(sel);
-
-if (val >= inputParse) {
+//create a variable to be changed to 100 if there is no value entred in input field
+    let scoreWin;
+    if(input) {
+      scoreWin = inputParse;
+    }else {
+      scoreWin = 100;
+    }
+if (val >= scoreWin) {
   winner();
 }
 
@@ -88,7 +94,7 @@ function nextPlayer() {
 
   const selector = selectors();
 
-  //cecck if game is still plying
+  //check if game is still plying
   if (gamePlaying) {
 // change active player
   activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
@@ -113,8 +119,14 @@ selectors().btnHold.addEventListener('click', function() {
     document.getElementById(`score-${activePlayer}`).textContent = scores[activePlayer]; 
     // get the input value 
     let input = document.querySelector('.final-score').value;
- // check the total score and compair it to the input value. call winner function if igger or equal to input
-    if (scores[activePlayer] >= input) {
+ // check th//create a variable to be changed to 100 if there is no value entred in input field
+    let scoreWin;
+    if(input) {
+      scoreWin = input;
+    }else {
+      scoreWin = 100;
+    }e total score and compair it to the input value. call winner function if igger or equal to input
+    if (scores[activePlayer] >= scoreWin) {
       winner()
       // next player othewise
     }else {
